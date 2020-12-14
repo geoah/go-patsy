@@ -22,6 +22,13 @@ import (
 func Name(env vos.Env, packagePath string, srcDir string) (string, error) {
 	c := build.Default
 	c.GOPATH = env.Getenv("GOPATH")
+
+	// chang dir to the srcDir because go/build uses os.Getwd when go modules is enabled
+	err := os.Chdir(srcDir)
+	if err != nil {
+		return "", errors.WithStack(err)
+	}
+
 	p, err := c.Import(packagePath, srcDir, 0)
 	if err != nil {
 		return "", errors.Wrapf(err, "importing %s", packagePath)

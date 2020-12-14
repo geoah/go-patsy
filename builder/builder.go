@@ -35,7 +35,10 @@ func New(env vos.Env, namespace string) (*Builder, error) {
 		b.Cleanup()
 		return nil, errors.Wrap(err, "Error creating temporary gopath src dir")
 	}
-	b.env.Setenv("GOPATH", gopath+string(filepath.ListSeparator)+b.env.Getenv("GOPATH"))
+	err = b.env.Setenv("GOPATH", gopath+string(filepath.ListSeparator)+b.env.Getenv("GOPATH"))
+	if err != nil {
+		return nil, errors.WithStack(err)
+	}
 
 	if err := os.MkdirAll(filepath.Join(gopath, "src", namespace), os.FileMode(0777)); err != nil {
 		b.Cleanup()
