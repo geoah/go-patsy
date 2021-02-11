@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/dave/patsy"
-	"github.com/dave/patsy/builder"
-	"github.com/dave/patsy/vos"
+	"github.com/geoah/go-patsy"
+	"github.com/geoah/go-patsy/builder"
+	"github.com/geoah/go-patsy/vos"
 )
 
 func TestName2(t *testing.T) {

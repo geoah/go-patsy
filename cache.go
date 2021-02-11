@@ -7,7 +7,7 @@ import (
 
 	"sync"
 
-	"github.com/dave/patsy/vos"
+	"github.com/geoah/go-patsy/vos"
 	"github.com/pkg/errors"
 )
 
